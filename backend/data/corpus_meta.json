@@ -1,0 +1,9 @@
+{
+  "git_commit": "dbb7430b1abc5bf92ccca3538f45c54bdc632fa8",
+  "ingested_at": "2026-08-21T18:13:14+00:00",
+  "corpus_sha256": "091e49529d74817070257802b400e41f331593c1f962f8741e5eef35bfe6c413",
+  "embed_model": "text-embedding-3-small",
+  "embed_dim": 1536,
+  "files": 1143,
+  "chunks": 3502
+}

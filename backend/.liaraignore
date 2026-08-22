@@ -1,0 +1,17 @@
+.venv/
+.venv-uv/
+tests/
+.DS_Store
+*.db-wal
+*.db-shm
+__pycache__/
+*.pyc
+*.pyo
+.env
+storage/
+.git/
+.gitignore
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+ingest/

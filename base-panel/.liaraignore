@@ -1,0 +1,15 @@
+# Liara reads this file first and then ignores .gitignore and .dockerignore entirely.
+# Without it, node_modules and .next (~1 GB together) get uploaded too — Liara runs
+# npm install and next build on the server and needs neither.
+node_modules/
+.next/
+out/
+
+# NEXT_PUBLIC_API_BASE must come from `liara env:set`, never from a local file.
+.env
+.env.local
+.env.*.local
+
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts

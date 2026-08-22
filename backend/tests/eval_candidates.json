@@ -1,0 +1,772 @@
+[
+  {
+    "q": "چگونه می‌توان experimental_telemetry را در فراخوانی generateText فعال کرد و با پارامترهای recordInputs و recordOutputs ثبت ورودی/خروجی را خاموش نمود؟",
+    "expect_url_contains": [
+      "telemetry"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم وقتی یک درخواست تولید متن می‌زنم، از ثبت خودکار داده‌های ورودی و خروجی جلوگیری کنم و در عین حال یک شناسه و اطلاعات اضافی برای آن درخواست ثبت کنم—چطور این کار را انجام دهم؟",
+    "expect_url_contains": [
+      "telemetry"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور با استفاده از streamText و متد pipeDataStreamToResponse خروجی مدل را به‌صورت استریم به پاسخ HTTP بفرستم؟ مثال‌های صفحه نشان می‌دهند که از createOpenAI و streamText استفاده شده و می‌خواهم بدانم چگونه پیام‌های اولیه بنویسم و خطاها را از طریق onError به کلاینت برگردانم.",
+    "expect_url_contains": [
+      "api-servers/express"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور روی یک سرور Node پاسخ‌های تولیدشده توسط SDK را به‌صورت پیوسته برای کلاینت پخش کنم؛ به‌طوری‌که قبل از فراخوانی مدل یک اعلان اولیه نمایش داده شود و در صورت خطا بتوانم پیغام خطا را به کاربر نشان دهم؟",
+    "expect_url_contains": [
+      "api-servers/express"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور با استفاده از createOpenAI و generateText در کد نمونه، مدل my_model('openai/gpt-4.1') را پیکربندی و فراخوانی کنم و مقادیر baseURL و apiKey را کجا قرار دهم تا متن تولید شده را در console.log ببینم؟",
+    "expect_url_contains": [
+      "openai-gpt-4-1"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور در یک پروژهٔ جاوااسکریپت با بسته‌های نصب‌شده، به سرویس هوش مصنوعی لیارا متصل شوم طوری که هم بتوانم یک پاسخ متنی دریافت کنم و هم خروجی را به صورت یک شیٔ JSON مطابق با یک schema تعریف‌شده (مثلاً با zod) بگیرم؟",
+    "expect_url_contains": [
+      "openai-gpt-4-1"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور می‌توانم تغییر پلن سرویس AI را انجام دهم تا تعداد LLMها و توکن‌ها را افزایش یا کاهش دهم؟",
+    "expect_url_contains": [
+      "ai/details/about"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم بستهٔ اشتراکی سرویس را عوض کنم تا تعداد مدل‌های زبانی مورد استفاده و سهمیهٔ توکن‌ها را افزایش یا کاهش بدهم؟",
+    "expect_url_contains": [
+      "ai/details/about"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "در پنل لیارا از مسیر منوی دیتابیس و کلیک روی سه‌نقطه و انتخاب گزینه حذف دیتابیس، آیا وارد کردن شناسه دیتابیس در فیلد خواسته‌شده اجباری است و پس از تایید امکان بازیابی داده‌ها وجود دارد؟",
+    "expect_url_contains": [
+      "delete-database"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم سرویس ذخیره‌سازی داده‌ام در لیارا را به‌طور دائم پاک کنم؛ آیا باید شناسه آن را جایی وارد کنم و بعد از حذف راهی برای برگرداندن اطلاعات هست؟",
+    "expect_url_contains": [
+      "delete-database"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای استفاده از کلاینت PHP، چه دستور composer باید اجرا شود و چگونه باید متغیر محیطی ELASTIC_SEARCH را مقداردهی کنم تا با استفاده از ClientBuilder و setHosts به آدرس سرویس اشاره کرده و با متد ping وضعیت اتصال را بررسی کنم؟",
+    "expect_url_contains": [
+      "elastic-search/how-tos/connect-via-platform/php"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور یک بسته را با composer نصب کنم و سپس آدرس شامل نام‌کاربری و رمز را در یک متغیر محیطی قرار دهم تا از داخل برنامه‌ام به سرویس جستجو/دیتابیس خارجی دسترسی پیدا کرده و یک درخواست ساده برای بررسی سلامت ارتباط بفرستم؟",
+    "expect_url_contains": [
+      "elastic-search/how-tos/connect-via-platform/php"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "با mysql-cli چه دستوری باید اجرا کنم تا با CREATE USER یک کاربر 'readonly_user'@'%' ایجاد کنم و با GRANT فقط SELECT روی <database_name>.* به او اختصاص دهم؟",
+    "expect_url_contains": [
+      "mariadb/create-user"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم از طریق ترمینال یک اکانت جدید در MariaDB ایجاد کنم که فقط بتواند داده‌ها را بخواند و هیچ توانایی نوشتن یا تغییر ساختار نداشته باشد؛ چطور این حالت را تنظیم کنم و چه مجوزهایی لازم است؟",
+    "expect_url_contains": [
+      "mariadb/create-user"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور پکیج Npgsql.EntityFrameworkCore.PostgreSQL را با نسخه 8.0.2 نصب کنم و سپس رشتهٔ اتصال را در appsettings.json اضافه کرده و در Program.cs با options.UseNpgsql(builder.Configuration.GetConnectionString(\"Production\")) کانکشن به PostgreSQL را برقرار کنم؟",
+    "expect_url_contains": [
+      "mongodb/how-tos/connect-via-platform/dotnet"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "من یک پروژهٔ دات‌نت دارم که باید به یک دیتابیس ابری متصل شود؛ چه بسته‌ای باید نصب کنم، رشتهٔ اتصال را کجا قرار بدهم و چه تغییراتی باید در فایل اصلی برنامه (Program.cs) بدهم تا برنامه بتواند از تنظیمات برای ارتباط با دیتابیس استفاده کند؟",
+    "expect_url_contains": [
+      "mongodb/how-tos/connect-via-platform/dotnet"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "آیا برای اتصال PHP به دیتابیس MSSQL باید اکستنشن sqlsrv نصب باشد و متغیرهای محیطی (مثل DB_HOST، DB_PORT، DB_DATABASE، DB_USERNAME، DB_PASSWORD) را چگونه تنظیم کنم تا از تابع sqlsrv_connect با گزینه‌های \"Encrypt\" => \"yes\" و \"TrustServerCertificate\" => \"yes\" استفاده کنم؟",
+    "expect_url_contains": [
+      "mssql/how-tos/connect-via-platform/php"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک برنامه PHP را به یه سرور دیتابیسی مایکروسافتی روی فضای ابری وصل کنم؛ چه متغیرهای کانفیگ لازم است در محیط برنامه تنظیم کنم و چه تنظیمات امنیتی باید فعال باشند تا اتصال برقرار شود؟",
+    "expect_url_contains": [
+      "mssql/how-tos/connect-via-platform/php"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور می‌توانم با استفاده از اطلاعات دیتابیس خود، در سریع‌ترین زمان ممکن در NodeJS به دیتابیس متصل شوم؟",
+    "expect_url_contains": [
+      "mysql/how-tos/connect-via-platform/about"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور از یک برنامه نوشته‌شده با هر زبان یا فریم‌ورکی با مشخصات دیتابیس‌ام خیلی سریع وصل بشوم؛ چه اطلاعات و قدم‌هایی لازم است؟",
+    "expect_url_contains": [
+      "mysql/how-tos/connect-via-platform/about"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور می‌توانم PGAdmin را از منوی 'نحوه اتصال' دیتابیس فعال کنم و برای ورود از چه نام کاربری و رمزی باید استفاده کنم؟",
+    "expect_url_contains": [
+      "pgadmin"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "برای دسترسی به یک ابزار مدیریت گرافیکی روی دیتابیس PostgreSQL در پنل، چگونه باید گزینه مربوط را روشن کنم و با چه نام کاربری و رمز وارد شوم؟",
+    "expect_url_contains": [
+      "pgadmin"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای ایجاد یک کاربر فقط خواندنی در MariaDB با استفاده از mysql-cli، دقیقاً چه دستورات SQL را باید اجرا کنم و در چه مرحله‌ای باید FLUSH PRIVILEGES را اجرا کنم؟",
+    "expect_url_contains": [
+      "rabbitmq/create-user"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور از طریق خط فرمان یک اکانت جدید در دیتابیس بسازم که فقط اجازه خواندن داشته باشد یا صرفاً برای گرفتن بکاپ استفاده شود؛ و چه دستوری باید پس از اعمال دسترسی‌ها اجرا شود تا تغییرات اعمال شوند؟",
+    "expect_url_contains": [
+      "rabbitmq/create-user"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "دستور کامل برای اتصال به سرور Redis با استفاده از redis-cli چیست و پارامترهای -h، -p و -a هرکدام چه نقشی دارند؟",
+    "expect_url_contains": [
+      "redis-cli"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور از طریق یک ابزار خط فرمان رسمی Redis به دیتابیس وصل بشم؛ چطور دسترسی شبکه عمومی را فعال کنم و چه دستوری باید با آدرس، پورت و رمز عبور اجرا کنم؟",
+    "expect_url_contains": [
+      "redis-cli"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "اگر هنگام ارسال ایمیل پارامتر 'From' نادرست باشد یا با خطای authentication error روبه‌رو شوم، چه اقداماتی باید برای اصلاح اطلاعات SMTP انجام دهم و چگونه مجدداً ایمیل را ارسال کنم؟ همچنین محدودیت ۱۰ مگابایتی برای پیوست را چگونه رعایت کنم؟",
+    "expect_url_contains": [
+      "details/common-errors"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "ایمیل‌های من به مخاطب نمی‌رسند؛ برای پیدا کردن مشکل و درست فرستادنشان باید چه مواردی را چک کنم؟ مثلاً نشانی فرستنده ساخته‌شده در پنل، محتوای پیام که ممکن است باعث تشخیص آن به‌عنوان مزاحم شود، این‌که گیرنده جلوی دریافت نکرده باشد، یا اندازه فایل‌های ضمیمه بیش از حد مجاز نباشد؟",
+    "expect_url_contains": [
+      "details/common-errors"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای اضافه کردن یک نشانی به ایمیل‌سرور دقیقاً چه مراحلی را باید در صفحه نشانی‌ها انجام دهم؟ باید روی گزینه «افزودن نشانی» کلیک کنم و چه چیزی را وارد کنم تا نشانی قابل قبول شناخته شود؟",
+    "expect_url_contains": [
+      "how-tos/add-account"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک آدرس ایمیل به سرور اضافه کنم تا بتوانم ایمیل بفرستم و دریافت کنم؛ از کجا در پنل این کار را انجام بدهم و آیا نیاز است داخل پروژه فایلی بسازم یا تنظیمی انجام دهم تا همه‌چیز درست کار کند؟",
+    "expect_url_contains": [
+      "how-tos/add-account"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای ارسال ایمیل با مثال داده‌شده، کدام متغیرهای محیطی (اسامی و مقادیر نمونه) باید تنظیم شوند و در کد چگونه از MailKit با گزینه SecureSocketOptions.SslOnConnect برای اتصال به smtp.c1.liara.email استفاده می‌شود؟",
+    "expect_url_contains": [
+      "email-server/how-tos/connect-via-platform/dotnet"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم از داخل یک اپلیکیشن سی‌شارپ یک ایمیل تستی با هدر دلخواه بفرستم؛ چه بسته‌ای باید نصب کنم و چه تنظیمات محیطی لازم است تا برنامه بتواند به‌صورت امن به سرویس ایمیل وصل شده و ایمیل را ارسال کند؟",
+    "expect_url_contains": [
+      "email-server/how-tos/connect-via-platform/dotnet"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چگونه مقدار MONGODB_URI را تنظیم کرده و با استفاده از mongoose.connect به دیتابیس متصل شوم و در زمان اتصال گزینهٔ maxPoolSize را مشخص کنم؟",
+    "expect_url_contains": [
+      "debian/how-tos/deploy-stack/mongodb"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور در برنامهٔ Node.js/Express یک رشتهٔ اتصال را از متغیر محیطی بخوانم و هم‌زمان حداکثر تعداد اتصالات به پایگاه‌داده را تعیین کنم؟",
+    "expect_url_contains": [
+      "debian/how-tos/deploy-stack/mongodb"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای ایجاد یک جفت کلید SSH چه دستور باید اجرا کنم (با استفاده از ssh-keygen) و پارامترهای -t و -b و -C چه کاربردی دارند؟",
+    "expect_url_contains": [
+      "ssh-key"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم بدون وارد کردن رمز عبور به ماشین راه‌دور وارد شوم؛ چطور فایل id_rsa.pub را از ماشین محلی به ماشین راه‌دور منتقل کنم، آن را در فایل authorized_keys قرار دهم و فایل اضافه را حذف کنم، و بعد چگونه از همان کلید برای ورود استفاده کنم (هر دو حالت اجرای دستورات از پاورشل و از محیط یونیکس-بیس)؟",
+    "expect_url_contains": [
+      "ssh-key"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای ایجاد کاربر جدید دقیقا چه دستوری اجرا می‌شود؟ (مثال: sudo adduser lorem) و پس از آن چگونه با کاربر ساخته‌شده از طریق SSH به سرور متصل شوم؟ (مثال: ssh lorem@<server-ip-address>)",
+    "expect_url_contains": [
+      "ubuntu/how-tos/create-new-user"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک حساب کاربری جدید روی سرور اضافه کنم و سپس با آن حساب از راه دور وارد شوم؛ چه مراحل و ورودی‌هایی باید انجام دهم و چطور با آن حساب وارد سرور شوم؟",
+    "expect_url_contains": [
+      "ubuntu/how-tos/create-new-user"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور با استفاده از پلاگین Media Cloud در WordPress از Object Storage لیارا استفاده کنم؟ مراحل نصب، فعال‌سازی و راه‌اندازی پلاگین به چه صورت است؟",
+    "expect_url_contains": [
+      "object-storage/how-tos/connect-via-platform/wordpress"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم پرونده‌های رسانه‌ای سایتم را در یک سرویس ذخیره‌سازی خارجی قرار بدهم و سیستم مدیریت محتوای سایت را طوری تنظیم کنم که از آن سرویس استفاده کند؛ چه افزونه‌ای مناسب است و چطور آن را نصب، فعال و پیکربندی کنم؟",
+    "expect_url_contains": [
+      "object-storage/how-tos/connect-via-platform/wordpress"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور می‌توانم یک فایل را از باکت مورد نظر حذف کنم؟ آیا کافیست وارد باکت شوم، در لیست فایل‌ها روی گزینه موردنظر کلیک کنم، سپس آیکون حذف را بزنم و در نهایت روی «حذف فایل» کلیک کنم؟",
+    "expect_url_contains": [
+      "delete-file"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک مورد ذخیره‌شده در باکت را پاک کنم—از داخل لیست آیتم‌ها چه مراحلی را باید انجام بدهم و چطور باید عملیات تایید نهایی را انجام دهم؟",
+    "expect_url_contains": [
+      "delete-file"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور می‌توانم در برنامهٔ وردپرسی خود در لیارا پارامترهای داخل php.ini را شخصی‌سازی کنم و سپس تغییرات را ثبت کنم؟",
+    "expect_url_contains": [
+      "wordpress/how-tos/customize-php-ini"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم مقادیر فایل پیکربندی مفسر سمت سرور را برای سایتم تغییر بدهم؛ از پنل سرویس شما چطور باید این مقادیر را وارد و ذخیره کنم تا تغییرات اعمال شوند؟",
+    "expect_url_contains": [
+      "wordpress/how-tos/customize-php-ini"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "آدرس «مستندات اتصال دامنه خریداری شده به برنامه Angular با سامانه مدیریت دامنه لیارا» چیست؟",
+    "expect_url_contains": [
+      "angular/related-links"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم فهرست همه لینک‌های مستنداتی که برای فریم‌ورکی که با آن برنامه‌نویسی کرده‌ام وجود دارد را بیابم و راهنمای وصل‌کردن دامنه‌ای که خریده‌ام به اپم را از کجا دانلود یا مشاهده کنم؟",
+    "expect_url_contains": [
+      "angular/related-links"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای حذف برنامه در لیارا آیا باید از منوی پلتفرم روی سه‌نقطه برنامه کلیک کرده و سپس شناسه برنامه را در فیلد وارد کنم؟ این عملیات قابل بازگشت است یا اطلاعات (سورس‌کد، ورژن‌ها، لاگ‌ها، دیسک‌ها) برای همیشه پاک می‌شوند؟",
+    "expect_url_contains": [
+      "details/delete-app"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خوام یک اپ رو از حساب لیارا برای همیشه پاک کنم؛ چه مراحلی رو باید انجام بدم و بعد از انجامش آیا امکان بازیابی داده‌ها وجود داره؟",
+    "expect_url_contains": [
+      "details/delete-app"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "در لیارا تمامی درخواست‌ها چگونه توسط Reverse Proxy به برنامه‌ی شما هدایت می‌شوند و این ساختار چه مزایایی مانند load balancing، افزایش امنیت، افزایش سرعت و فشرده‌سازی را فراهم می‌کند؟",
+    "expect_url_contains": [
+      "details/reverse-proxy"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور یک سرور واسط درخواست‌های کاربران را دریافت و به برنامه‌ٔ من می‌فرستد، و این کار چه تاثیری روی توزیع بار، امنیت و سرعت پردازش دارد؟",
+    "expect_url_contains": [
+      "details/reverse-proxy"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای انتقال فایل‌های یک دیسک به یک باکت با rclone، در حین اجرای rclone config چطور یک remote برای دیسک و یک remote برای باکت بسازم، چگونه مقدار explicit_tls را برای استفاده از FTPS تنظیم کنم و در نهایت از چه دستور rclone (copy یا move) و با چه قالبی باید استفاده کنم؟",
+    "expect_url_contains": [
+      "move-files-to-bucket"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور فایل‌های موجود در فضای FTPِ یک سرویس را با یک ابزار خط‌فرمان به یک مخزن ابری کپی یا منتقل کنم، طوری که اتصال امن (TLS) بشود و هم گزینهٔ کپی و هم گزینهٔ جابجایی را بلد باشم؟",
+    "expect_url_contains": [
+      "move-files-to-bucket"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای اتصال Django به MSSQL چه مراحل دقیق را باید انجام دهم؟ آیا باید ابتدا pip install mssql-django را اجرا کنم، سپس در settings.py بخش DATABASES با ENGINE='mssql' و OPTIONS شامل driver='ODBC Driver 18 for SQL Server' و extra_params='Encrypt=no;' را تنظیم کنم، متغیرهای محیطی MSSQL_DB_HOST/PORT/USER/PASS/NAME را اضافه کنم، با pip freeze > requirements.txt فایل requirements.txt را به‌روزرسانی کنم، یک اپ جدید بسازم و آن را به INSTALLED_APPS اضافه کنم، و برای بررسی اتصال از connections['mssql'].ensure_connection() در یک view استفاده کنم؟ همچنین برای فعال‌سازی امکان connection pooling آیا باید DATABASE_CONNECTION_POOLING = True را در settings.py قرار دهم؟",
+    "expect_url_contains": [
+      "django/how-tos/connect-to-db/mssql"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌تونم یک پروژه جنگو رو به یک پایگاه‌داده سرور SQL مایکروسافت روی لیارا وصل کنم؟ از نصب یک ماژول در محیط پایتون و تنظیم متغیرهای مربوط به میزبان/پورت/کاربر/رمز و نام دیتابیس گرفته تا آپدیت کردن requirements و ساختن یه view برای تست اتصال — ترتیب کارها و دقیق‌ترین تنظیماتی که باید توی فایل تنظیمات انجام بدم چیه؟ و چطور فعال‌کنم که برنامه به‌جای باز و بستن مکرر، از مجموعه‌ای از اتصالات آماده استفاده کنه؟",
+    "expect_url_contains": [
+      "django/how-tos/connect-to-db/mssql"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "آیا ماژول FFMPEG به‌صورت پیش‌فرض در برنامه‌های Django نصب است و متغیرهای محیطی FFMPEG_PATH و FFPROBE_PATH در پلتفرم تنظیم شده‌اند؟ همچنین چگونه کتابخانهٔ ffmpeg-python را نصب کرده و در viewهای Django برای تبدیل و پردازش ویدیو از آن استفاده کنم (مثال کد و نحوه اجرا)؟",
+    "expect_url_contains": [
+      "django/how-tos/use-ffmpeg-module"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "ابزاری برای پردازش و تبدیل فایل‌های صوتی/تصویری از قبل روی برنامهٔ وب فعال است و مسیرهای اجرایی آن به‌صورت متغیر محیطی پیکربندی شده‌اند؛ چطور بستهٔ پایتون مناسب را نصب کنم و در بخش‌های پاسخ‌دهی برنامه وب از آن برای تبدیل ویدیو استفاده کنم، همراه با نمونهٔ کد؟",
+    "expect_url_contains": [
+      "django/how-tos/use-ffmpeg-module"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور با استفاده از فایل liara.json یک Image از DockerHub را مستقر کنم؛ چه مقادیر باید در فیلدهای app، image، port و disks قرار دهم و سپس چگونه با دستور liara deploy --platform=docker برنامه را منتشر کنم؟",
+    "expect_url_contains": [
+      "deploy-image-from-dockerhub"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک تصویر آماده از یک رجیستری عمومی را روی سرویس شما اجرا کنم بدون اینکه کد بسازم؛ چگونه نام تصویر، پورتی که برنامه به آن گوش می‌دهد و محل ذخیره‌سازی دائمی را تعیین کنم و سپس برنامه را منتشر نمایم؟",
+    "expect_url_contains": [
+      "deploy-image-from-dockerhub"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای ثبت ریدایرکت در سامانه مدیریت دامنه لیارا دقیقاً چه مراحلی را باید انجام دهم؟ (مراحل مربوط به ثبت زیردامنه، بخش ریدایرکت دامنه، قسمت انتخاب دامنه، قسمت نوع ریدایرکت و دکمه ذخیره را توضیح دهید) و در قسمت نوع ریدایرکت چه مقادیری قابل انتخاب‌اند؟",
+    "expect_url_contains": [
+      "redirect-url"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "من یک زیردامنه دارم و می‌خواهم بازدیدکننده‌ها را به آدرس دیگری بفرستم؛ چطور این کار را انجام دهم و چگونه بین هدایت دائمی و هدایت موقت یکی را انتخاب کنم؟",
+    "expect_url_contains": [
+      "redirect-url"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای اجرای Migrationها بدون نیاز به اجرای دستور dotnet ef database update، چه قطعه‌کدی را باید به فایل Program.cs اضافه کنم؟",
+    "expect_url_contains": [
+      "dotnet/how-tos/connect-to-db/about"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم طوری تنظیم کنم که وقتی اپلیکیشن بالا می‌آید، تغییرات ساختار دیتابیس به‌صورت خودکار اعمال شوند و نیازی به اجرای یک دستور جداگانه نباشد؟",
+    "expect_url_contains": [
+      "dotnet/how-tos/connect-to-db/about"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "آیا ماژول FFMPEG به‌صورت پیش‌فرض در برنامه‌های NET. نصب است و متغیرهای محیطی `FFMPEG_PATH` و `FFPROBE_PATH` در این پلتفرم تنظیم شده‌اند تا بدون کار اضافی بتوانم از آن استفاده کنم؟",
+    "expect_url_contains": [
+      "dotnet/how-tos/use-ffmpeg-module"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم در برنامه‌ام از یک ابزار آماده برای ضبط، تبدیل و پخش ویدیو/صوت استفاده کنم بدون اینکه چیزی نصب کنم؛ چگونه می‌توانم از نسخهٔ موجود روی پلتفرم بهره ببرم و آیا مسیر اجرای آن از قبل به‌صورت متغیر محیطی تعریف شده است؟",
+    "expect_url_contains": [
+      "dotnet/how-tos/use-ffmpeg-module"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای نصب بسته و به‌روزرسانی requirements.txt جهت استفاده از Redis در Flask چه دستوراتی باید اجرا کنم؟ (مثلاً اجرای pip install redis، تعیین متغیر REDIS_URI و سپس pip freeze > requirements.txt) و چگونه از redis.StrictRedis.from_url برای ایجاد کلاینت استفاده می‌شود؟",
+    "expect_url_contains": [
+      "flask/how-tos/connect-to-db/redis"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور در یک اپ فلاسک بعد از نصب پکیج مربوطه و قرار دادن آدرس سرویس در یک متغیر محیطی، با کدی مشابه نمونه ارتباط برقرار کرده و با یک فراخوانی ساده وضعیت اتصال را بررسی کنم؟",
+    "expect_url_contains": [
+      "flask/how-tos/connect-to-db/redis"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "مستندات اتصال برنامه‌های Flask به سرویس ذخیره‌سازی ابری لیارا چه مراحلی را شرح می‌دهد و لینک آن کجاست؟",
+    "expect_url_contains": [
+      "flask/related-links"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم فایل‌های برنامه‌ام را در فضای ابری لیارا ذخیره و از آن‌ها استفاده کنم؛ چه راهنمایی‌ها و لینک‌هایی برای انجام این کار موجود است؟",
+    "expect_url_contains": [
+      "flask/related-links"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "آیا لیارا به‌طور کامل از Go و تمامی ابزارهای مرتبط با آن پشتیبانی می‌کند؟",
+    "expect_url_contains": [
+      "paas/go/getting-started"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک اپلیکیشن نوشته‌شده با زبان برنامه‌نویسیِ توسعه‌یافته توسط گوگل را روی این پلتفرم اجرا کنم؛ آیا سرویس از آن و فریم‌ورک‌های معروف آن پشتیبانی می‌کند و از کجا می‌توانم راهنمای نصب سریع و راهنماهای مربوط به فریم‌ورک‌ها را پیدا کنم؟",
+    "expect_url_contains": [
+      "paas/go/getting-started"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "در لیارا، چه اکستنشن‌هایی در پلتفرم Laravel نصب شده‌اند؟",
+    "expect_url_contains": [
+      "laravel/how-tos/see-extension"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خوام بدونم روی سرویس شما چه ماژول‌های PHP و Zend فعال هستند — می‌شه لیست کامل‌شون رو بفرستید؟",
+    "expect_url_contains": [
+      "laravel/how-tos/see-extension"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "در لاراول چگونه با متد env() یک کلید محیطی را خوانده و برای آن مقدار پیش‌فرض تعیین کنم؟ و آیا لیارا پس از اضافه کردن این متغیرها به برنامه به‌طور خودکار php artisan config:clear و php artisan config:cache را اجرا می‌کند؟",
+    "expect_url_contains": [
+      "laravel/how-tos/set-envs"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌تونم یک مقدار پیکربندی که روی سرور تعریف شده را داخل برنامه لاراول بخونم طوری که اگر وجود نداشت یک مقدار پیش‌فرض داشته باشه، و آیا سرویس میزبان پس از اضافه کردن آن تنظیم به‌صورت خودکار دستورهای پاک‌سازی و کش تنظیمات را اجرا می‌کنه؟",
+    "expect_url_contains": [
+      "laravel/how-tos/set-envs"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای استفاده از پکیج tcg/voyager در لیارا، دقیقا چگونه باید مقدار \"dont-discover\" را در فایل composer.json تنظیم کنم و کدام دو خط مربوط به سرویس‌پروایدرها را باید در آرایه providers فایل config/app.php اضافه کنم؟",
+    "expect_url_contains": [
+      "voyager"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک پنل مدیریت آماده را به برنامه‌ام اضافه کنم اما بسته مورد نظر نباید توسط کشف خودکار لاراول نصب شود و باید سرویس‌پروایدرهایش را دستی ثبت کنم؛ چطور باید ورودی عدم کشف خودکار را در composer.json قرار دهم و چه خطوطی را در فایل پیکربندی برای ثبت سرویس‌پروایدرها اضافه کنم؟",
+    "expect_url_contains": [
+      "voyager"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چگونه می‌توانم در برنامه‌های NextJS در لیارا به MongoDB یا PostgreSQL متصل شوم و فهرست کامل سایر دیتابیس‌هایی که پلتفرم پشتیبانی می‌کند چیست؟",
+    "expect_url_contains": [
+      "nextjs/how-tos/connect-to-db/about"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "برنامه‌ای که روی لیارا دارم باید به سرویس‌هایی مثل MongoDB یا Redis وصل شود — چه گزینه‌هایی برای وصل کردن سرویس ذخیره‌سازی در دسترس هستند و از کجا شروع کنم؟",
+    "expect_url_contains": [
+      "nextjs/how-tos/connect-to-db/about"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "در App Router طبق مستندات، چه محتوایی باید در فایل lib/redis.js قرار گیرد تا با استفاده از پکیج ioredis و متغیر محیطی DB_URI به Redis متصل شود؟",
+    "expect_url_contains": [
+      "nextjs/how-tos/connect-to-db/redis"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "در پروژه‌ی Next.js می‌خواهم یک ماژول ساده بسازم که آدرس Redis را از متغیر محیطی بگیرد و اتصال را برقرار کند — چگونه آن فایل را بنویسم و چه کدی لازم است؟",
+    "expect_url_contains": [
+      "nextjs/how-tos/connect-to-db/redis"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای رفع خطای CORS در فریم‌ورک Fastify، چه بسته‌هایی را باید نصب کنم و دستور دقیق نصب چیست؟ همچنین چطور باید آن‌ها را ثبت کنم (مثلاً استفاده از await fastify.register و fastify.use) — لطفاً نمونهٔ دستوری و قطعه‌کد مورد نیاز را توضیح دهید.",
+    "expect_url_contains": [
+      "cors-error/fastify"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "در برنامهٔ Node.js ام درخواست‌ها از دامنه‌های دیگر بلوکه می‌شوند؛ چطور با نصب بسته‌هایی و ثبت یک میان‌افزار در سرور، دسترسی‌های میان‌دامنه‌ای را فعال کنم؟ چه کارهایی باید در کدنویسی انجام بدهم تا این مشکل رفع شود؟",
+    "expect_url_contains": [
+      "cors-error/fastify"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "با توجه به اینکه تمامی درخواست‌ها توسط reverse proxy لیارا به برنامه هدایت می‌شوند، چگونه باید تعیین کنم که برنامه‌ام در پشت یک reverse proxy راه‌اندازی شده است تا بتوانم IP واقعی کاربران را از هدرهای X-Forwarded-For یا X-Real-IP بخوانم؟",
+    "expect_url_contains": [
+      "configure-trusted-proxy/about"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "خدمات لیارا همهٔ درخواست‌ها رو از یک میانجی می‌فرسته؛ چطور می‌تونم اپ نودجی‌اسم رو طوری کانفیگ کنم که آدرس واقعی کاربران رو از هدرهای مربوطه بگیره و تو هر محیط اجرایی درست کار کنه؟",
+    "expect_url_contains": [
+      "configure-trusted-proxy/about"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای استفاده از sqlite3 در برنامه NodeJS چه مراحلی لازم است؟ مثلا دستور نصب npm install sqlite3، ایجاد پوشه db و اتصال به 'db/database.db'، اجرای db.serialize با ایجاد جدول lorem و درج داده‌ها، سپس ساخت دیسک با نام database و قرار دادن {\"name\":\"database\",\"mountTo\":\"db\"} در liara.json پیش از liara deploy — آیا این روند کامل و صحیح است؟",
+    "expect_url_contains": [
+      "nodejs/how-tos/connect-to-db/sqlite"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک فایل دیتابیسی داخل پروژه‌ام هنگام ارسال به سرویس شما ماندگار بماند و برنامه Node.js بتونه داخلش سطر اضافه و خواندن انجام بده؛ باید چه کارهایی از طرف پروژه و پنل انجام بدم (نصب بسته، ساخت پوشه، ساخت دیسک در پنل و پیکربندی فایل تنظیمات) تا این فایل روی سرور در دسترس و پایدار باشه؟",
+    "expect_url_contains": [
+      "nodejs/how-tos/connect-to-db/sqlite"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "آیا برای اتصال به پایگاه‌داده نیاز به نصب اکستنشن‌هایی مانند PDO و pgsql هست یا لیارا این‌ها را از قبل فراهم کرده است؟ همچنین متغیر محیطی PG_URI را چگونه باید تنظیم کنم تا اتصال با استفاده از PDO برقرار شود و قابلیت اتصال پایدار با ATTR_PERSISTENT فعال شود؟",
+    "expect_url_contains": [
+      "php/how-tos/connect-to-db/postgresql"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خوام برنامه‌ام به یک سرویس دیتابیس متصل بشه؛ آیا باید ماژول خاصی نصب کنم یا فقط مقداردهی یک متغیر محیطی کافی است؟ و این‌که اتصال‌ها به صورت پایدار/گروهی مدیریت می‌شن یا نیاز به تنظیم اضافی دارم؟",
+    "expect_url_contains": [
+      "php/how-tos/connect-to-db/postgresql"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور باید یک Cron Job برای PHP در فایل liara.json تعریف کنم؟ چه قالبی باید داشته باشد (مثال: \"0 1 * * * cd $ROOT && php update_price.php >> /dev/null 2>&1\") و چگونه آن را فعال می‌کنم؟",
+    "expect_url_contains": [
+      "php/how-tos/set-cron-job"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک اسکریپت PHP را در فواصل زمانی مشخص روی پلتفرم ابری‌ام اجرا کنم؛ چطور باید این زمان‌بندی را در پروژه‌ام پیکربندی کنم و بعد از آپلود/استقرار برنامه چگونه این کار زمان‌بندی شده فعال می‌شود؟",
+    "expect_url_contains": [
+      "php/how-tos/set-cron-job"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چگونه می‌توان خطای `WORKER TIMEOUT` در Gunicorn را رفع کرد و در صورت نیاز مقدار timeout را با استفاده از متغیر محیطی `GUNICORN_TIMEOUT` برای برنامه تنظیم کرد؟",
+    "expect_url_contains": [
+      "python/fix-common-errors/worker-timeout"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "در برنامه پایتونم برخی درخواست‌ها دیر پاسخ می‌دهند و پردازش‌ها متوقف و دوباره راه‌اندازی می‌شوند — چطور می‌توانم با اضافه کردن یک متغیر محیطی مقدار زمان مجاز پردازش را به ثانیه افزایش دهم؟",
+    "expect_url_contains": [
+      "python/fix-common-errors/worker-timeout"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای اتصال به دیتابیس ElasticSearch در برنامهٔ Python چه پکیجی را باید نصب کنم، چگونه متغیر محیطی ELASTICSEARCH_URI را تنظیم کنم، فایل requirements.txt را چگونه به‌روز کنم و در کد چگونه با استفاده از Elasticsearch و es.ping() وضعیت اتصال را بررسی کنم؟",
+    "expect_url_contains": [
+      "python/how-tos/connect-to-db/elastic-search"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور از برنامهٔ نوشته‌شده با پایتون به یک سرویس جستجوی HTTP که روی لیارا میزبانی شده دسترسی برقرار کنم؟ چه بسته‌ای باید نصب شود، متغیرهای محیطی را چگونه مقداردهی کنم، فایل وابستگی‌ها را چطور به‌روز کنم و در کد چگونه مطمئن شوم سرویس در دسترس است؟",
+    "expect_url_contains": [
+      "python/how-tos/connect-to-db/elastic-search"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور می‌توان در فایل liara_nginx.conf هدر Strict-Transport-Security را اضافه و مقدار max-age و includeSubdomains را تنظیم کرد و آیا قبل از فعال‌سازی این هدر نیاز است SSL دامنه را فعال کنیم؟",
+    "expect_url_contains": [
+      "react/how-tos/set-http-security-headers"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم با ویرایش فایل پیکربندی سرویس‌دهنده، قوانینی بگذارم تا از اجرای اسکریپت‌های مخرب و باز شدن سایت داخل فریم‌های دیگر جلوگیری شود و مرورگرها همیشه از اتصال امن استفاده کنند؛ چه تنظیماتی باید اضافه کنم و آیا قبل از اعمال قانون مربوط به مدت‌زمان اتصال امن باید برای دامنه‌ام گواهی امن فعال کرده باشم؟",
+    "expect_url_contains": [
+      "react/how-tos/set-http-security-headers"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای ساخت برنامه با همان دستورهای مستندات از پوشهٔ اصلی پروژه چه فرمانی را باید اجرا کنم و فایل‌های خروجی در چه پوشه‌ای قرار می‌گیرند و سپس چه دستور دقیقی برای استقرار در لیارا باید در آن پوشه اجرا شود؟",
+    "expect_url_contains": [
+      "jekyll"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "من یک وب‌سایت تولیدشده از فایل‌های Markdown با ابزاری که با روبی نوشته می‌شود دارم — چطور خروجی آمادهٔ مرورگر را بسازم و بعد آن را با چه فرمانی روی لیارا آپلود و منتشر کنم؟",
+    "expect_url_contains": [
+      "jekyll"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای استقرار با Liara CLI چه دستورات و ترتیب مراحلی را باید اجرا کنم؟ (نصب ابزار با npm install -g @liara/cli، فرمان liara login برای ورود، liara network create برای ساخت شبکه خصوصی و liara create برای ایجاد برنامه — به همراه نکات مربوط به فایل package.json و اسکریپت start و استفاده از liaraignore/gitignore)",
+    "expect_url_contains": [
+      "vue/quick-start"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم یک اپ ساخته‌شده با Vite را روی پلتفرم شما منتشر کنم؛ از چه کارهایی در ترمینال باید شروع کنم و چه مراحلی (نصب ابزار لازم، ورود به حساب، ساخت شبکه خصوصی، ساخت اپ و نادیده‌گرفتن پوشه‌های اضافی) را باید طی کنم؟",
+    "expect_url_contains": [
+      "vue/quick-start"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "در دستور liara account:list چگونه از گزینه‌های --columns و --output استفاده کنم تا ستون‌های دلخواه را نمایش دهم و خروجی را به فرمت csv یا json بگیرم؟",
+    "expect_url_contains": [
+      "list-accounts"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خوام با ابزار خط‌فرمان سرویس، فهرمی از پروفایل‌های کاربری‌ام را ببینم و بتوانم خروجی را به‌صورت csv یا json ذخیره کنم؛ چه دستور و گزینه‌هایی باید بزنم؟",
+    "expect_url_contains": [
+      "list-accounts"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "با استفاده از liara db list (یا liara db ls) چطور می‌توانم لیست دیتابیس‌های ایجاد شده را نمایش دهم و چه پارامترهایی مثل --columns, --filter, --output, --sort, --team-id, --api-token و --no-header قابل‌استفاده‌اند؟",
+    "expect_url_contains": [
+      "list-dbs"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور با ابزار خط‌فرمان می‌توانم فهرست پایگاه‌داده‌هایی که ساختم را ببینم و خروجی فهرست را مثلاً به صورت json یا csv یا با فیلتر و ستون‌های مشخص دریافت کنم؟",
+    "expect_url_contains": [
+      "list-dbs"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "چطور با دستور liara disk:create یک دیسک جدید ایجاد کنم و پارامترهای [-a <value>]، [-n <value>] و [-s <value>] چه مقادیر و نقش‌هایی می‌پذیرند؟",
+    "expect_url_contains": [
+      "manage-disks"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "می‌خواهم از ترمینال برای اپلیکیشنم یک حجم ذخیره‌سازی جدید بسازم؛ هنگام اجرای فرمان ساخت چه اطلاعاتی ازم پرسیده می‌شود (مثل شناسهٔ اپ، نام و اندازه) و چه گزینه‌هایی برای مشخص کردن حساب یا شناسهٔ تیم وجود دارد؟",
+    "expect_url_contains": [
+      "manage-disks"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای اینکه پس از هر پرداخت، فاکتور صادر شود باید در پروفایل وارد بخش «افزایش اعتبار» شده و در «اطلاعات لازم برای صدور فاکتور» فیلدها را پر کرده و روی «ثبت اطلاعات» کلیک کنم؟",
+    "expect_url_contains": [
+      "receive-invoice"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم طوری تنظیم کنم که بعد از هر پرداخت، شرکت یک سند رسمی حاوی جزئیات تراکنش برایم صادر و ارسال کند؟",
+    "expect_url_contains": [
+      "receive-invoice"
+    ],
+    "kind": "paraphrase"
+  },
+  {
+    "q": "برای انتقال مالکیت تیم، ابتدا چه تغییری باید در نقش کاربری که قرار است مالک شود اعمال شود و سپس در کدام بخش رابط کاربری باید گزینهٔ انتقال مالکیت را انتخاب کرد؟",
+    "expect_url_contains": [
+      "transfer-ownership"
+    ],
+    "kind": "simple"
+  },
+  {
+    "q": "چطور می‌توانم کنترل کامل و اختیارات مدیریتی یک تیم را به یک عضو دیگر بدهم به‌طوری که نقش مدیریتی من از بین برود و فرد جدید همهٔ دسترسی‌ها را داشته باشد؟",
+    "expect_url_contains": [
+      "transfer-ownership"
+    ],
+    "kind": "paraphrase"
+  }
+]

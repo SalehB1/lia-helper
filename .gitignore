@@ -1,0 +1,47 @@
+# Python
+.venv
+.venv/
+.venv-uv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Runtime state — the SQLite DB lives on a Liara disk in production
+storage/
+backend/storage/
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets — never commit; see .env.example in each app
+.env
+.env.local
+.env.*.local
+
+# Node / Next
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Ingest scratch (the cloned upstream docs repo cache)
+.ingest-cache/
+
+# Agent / assistant instruction files — local tooling, not part of the project
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.claude/
+.cursor/
+.github/copilot-instructions.md
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# NOTE: backend/data/ IS committed on purpose — chunks.jsonl and embeddings.npz are
+# the shipped retrieval corpus and the app cannot answer without them.

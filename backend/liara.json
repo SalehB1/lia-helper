@@ -1,0 +1,24 @@
+{
+  "app": "liara-docs-api",
+  "platform": "python",
+  "port": 80,
+  "python": {
+    "version": "3.12"
+  },
+  "disks": [
+    {
+      "name": "data",
+      "mountTo": "storage"
+    }
+  ],
+  "healthCheck": {
+    "command": "CMD curl --fail http://localhost:80/healthz || exit 1",
+    "interval": 30,
+    "timeout": 15,
+    "retries": 3,
+    "startPeriod": 25
+  },
+  "args": [
+    "gunicorn main:app -k worker.GracefulUvicornWorker -w 1 -b 0.0.0.0:80 --timeout 120 --access-logfile -"
+  ]
+}

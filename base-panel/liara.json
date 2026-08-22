@@ -1,0 +1,8 @@
+{
+  "app": "liara-docs-panel",
+  "platform": "next",
+  "port": 3000,
+  "next": {
+    "mirror": false
+  }
+}

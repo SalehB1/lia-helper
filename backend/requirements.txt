@@ -1,0 +1,35 @@
+# Pinned to the versions actually installed and tested in .venv.
+# fastapi must stay >=0.141: `strict_content_type=True` is the default there, and it is what
+# forces a JSON preflight on every state-changing route — the second layer of the CSRF
+# defence behind main.py's Origin allowlist.
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+gunicorn==26.1.0
+
+# Async SQLite persistence. greenlet is SQLAlchemy's asyncio bridge — required at runtime.
+SQLAlchemy==2.0.52
+aiosqlite==0.22.1
+greenlet==3.5.5
+
+pydantic==2.13.4
+python-decouple==3.8
+
+# LLM (OpenRouter + Gemini OpenAI-compatible endpoints) and raw REST embedding calls.
+openai==3.3.1
+# openai 3.x depends on httpx2, NOT httpx — so the transport that every model call actually
+# runs on is the pair below, and leaving it unpinned means the streaming and connection-pool
+# behaviour can change under a rebuild without a line moving in this file.
+httpx2==2.12.0
+httpcore2==2.12.0
+# Used by ingest/ingest.py, which talks to the embeddings endpoint directly. Not the LLM path.
+httpx==0.28.1
+
+# Hybrid retrieval: BM25 lexical + numpy dot products over the dense index.
+rank-bm25==0.2.2
+numpy==2.2.6
+
+structlog==26.1.0
+slowapi==0.1.10
+
+# Admin auth. JWT only — password hashing is stdlib hashlib, which needs no dependency.
+pyjwt==2.13.0

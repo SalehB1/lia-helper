@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Every color is a token. Both themes are defined here — never define a color
+   only inside .dark, and never hard-code a hex in a component. */
+:root {
+  --background: hsl(220 32% 93%);
+  --foreground: hsl(222 22% 11%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222 22% 11%);
+  --muted: hsl(220 20% 92%);
+  --muted-foreground: hsl(220 13% 38%);
+  --primary: hsl(173 100% 30%);
+  --primary-foreground: hsl(0 0% 100%);
+  --border: hsl(220 16% 86%);
+  --ring: hsl(173 100% 30%);
+  --destructive: hsl(0 72% 46%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --radius: 2rem;
+
+  /* liquid glass — the pane is mostly transparent; what sells it is the blur behind
+     it, a bright specular rim on top and a soft shadow under it. Keep the page
+     colourful (aurora below) or a 55% pane has nothing to refract. */
+  --glass: hsl(0 0% 100% / 0.46);
+  --glass-hover: hsl(0 0% 100% / 0.62);
+  --glass-solid: hsl(0 0% 100% / 0.94);
+  --glass-border: hsl(0 0% 100% / 0.75);
+  --glass-blur: 20px;
+  --glass-saturate: 180%;
+  --glass-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.9),
+    inset 0 -1px 0 hsl(222 30% 40% / 0.07),
+    0 12px 32px -16px hsl(222 45% 25% / 0.28);
+  --aurora-a: hsl(173 85% 45% / 0.38);
+  --aurora-b: hsl(255 85% 65% / 0.32);
+  --aurora-c: hsl(196 90% 52% / 0.3);
+  --gradient-page: linear-gradient(160deg, hsl(214 44% 94%), hsl(222 30% 82%));
+  /* A faint grid behind the panes. Glass only reads as glass when the blur has an edge to
+     smear — a flat wash blurs into itself and looks like paint. */
+  --grid-line: hsl(222 32% 38% / 0.11);
+  --grid-size: 26px;
+  /* Scrollbar thumb — a wash of --muted-foreground, so it follows whichever theme is
+     active without a second definition, and stays translucent over glass. */
+  --scrollbar-thumb: color-mix(in srgb, var(--muted-foreground) 28%, transparent);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--muted-foreground) 60%, transparent);
+  --gradient-primary: linear-gradient(135deg, hsl(173 100% 30%), hsl(196 88% 38%));
+  /* A specular band, not a wash: the stop is an absolute length so a tall pane (the sidebar)
+     gets the same rim as a short one instead of being painted white top to bottom. */
+  --gradient-sheen: linear-gradient(160deg, hsl(0 0% 100% / 0.7), hsl(0 0% 100% / 0) 11rem);
+  --gradient-accent: linear-gradient(120deg, hsl(173 80% 45% / 0.18), hsl(255 80% 65% / 0.14) 60%, transparent);
+
+  /* assistant surfaces */
+  --success: hsl(152 60% 32%);
+  --success-foreground: hsl(0 0% 100%);
+  --warning: hsl(38 92% 42%);
+  --warning-foreground: hsl(30 45% 12%);
+
+  /* code + syntax highlighting (rehype-highlight emits .hljs-* classes) */
+  --code: hsl(220 20% 97%);
+  --code-foreground: hsl(222 22% 20%);
+  --syntax-keyword: hsl(280 55% 45%);
+  --syntax-string: hsl(150 55% 28%);
+  --syntax-comment: hsl(220 9% 50%);
+  --syntax-number: hsl(25 75% 38%);
+  --syntax-function: hsl(215 80% 45%);
+  --syntax-variable: hsl(345 65% 45%);
+}
+
+.dark {
+  --background: hsl(222 26% 7%);
+  --foreground: hsl(210 20% 96%);
+  --card: hsl(222 22% 11%);
+  --card-foreground: hsl(210 20% 96%);
+  --muted: hsl(222 18% 17%);
+  --muted-foreground: hsl(220 12% 68%);
+  --primary: hsl(173 90% 38%);
+  --primary-foreground: hsl(222 24% 8%);
+  --border: hsl(222 16% 22%);
+  --ring: hsl(173 90% 38%);
+  --glass: hsl(222 24% 15% / 0.58);
+  --glass-hover: hsl(222 24% 22% / 0.75);
+  --glass-solid: hsl(222 26% 12% / 0.95);
+  --glass-border: hsl(210 40% 92% / 0.13);
+  --glass-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.09),
+    inset 0 -1px 0 hsl(222 60% 2% / 0.4),
+    0 14px 36px -18px hsl(222 60% 2% / 0.7);
+  --aurora-a: hsl(173 90% 40% / 0.3);
+  --aurora-b: hsl(255 80% 60% / 0.26);
+  --aurora-c: hsl(196 90% 45% / 0.2);
+  --grid-line: hsl(210 40% 92% / 0.05);
+  --gradient-page: linear-gradient(160deg, hsl(222 26% 10%), hsl(222 30% 5%));
+  --gradient-primary: linear-gradient(135deg, hsl(173 90% 38%), hsl(196 85% 45%));
+  --gradient-sheen: linear-gradient(160deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0) 11rem);
+  --gradient-accent: linear-gradient(120deg, hsl(173 80% 45% / 0.18), hsl(255 80% 65% / 0.14) 60%, transparent);
+  --destructive: hsl(0 63% 50%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --success: hsl(152 55% 45%);
+  --success-foreground: hsl(222 24% 8%);
+  --warning: hsl(38 90% 58%);
+  --warning-foreground: hsl(30 45% 10%);
+
+  /* In the --card/--muted band, never near --background: the answer is cardless now, so
+     the fill IS the fence. At 7% it computed one channel off the page and vanished. */
+  --code: hsl(222 22% 13%);
+  --code-foreground: hsl(210 18% 88%);
+  --syntax-keyword: hsl(280 70% 76%);
+  --syntax-string: hsl(150 55% 62%);
+  --syntax-comment: hsl(220 10% 55%);
+  --syntax-number: hsl(28 85% 68%);
+  --syntax-function: hsl(207 85% 70%);
+  --syntax-variable: hsl(345 80% 72%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
+  --color-scrollbar-thumb: var(--scrollbar-thumb);
+  --color-scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
+  /* Vazirmatn, loaded by next/font in app/layout.tsx. Only --font-sans: --font-mono
+     stays on Tailwind's default stack so code keeps its own face. */
+  --font-sans: var(--font-vazirmatn), ui-sans-serif, system-ui, sans-serif;
+  /* One nested scale: panes take the full --radius, controls inside them step down
+     so corners stay concentric instead of fighting each other. */
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: var(--radius);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+
+  /* Scrollbars: quiet, but never invisible — a bar nobody can find is worse than a loud one,
+     and on a code fence it is the only cue that the command continues off-screen. Both
+     engines are covered: the standard properties (Firefox, and Chromium ≥121, which prefers
+     them over the pseudos) and the ::-webkit-* pseudos for everything older, Safari included. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+  /* The rest/hover step has to exist on the standard property too, since Chromium never
+     reaches the pseudos here. Safe against inheritance: the `*` rule
+     above re-declares the resting value on every element, so a hovered ancestor cannot leak
+     the loud value down into a scroller the pointer is not actually on. */
+  :hover {
+    scrollbar-color: var(--scrollbar-thumb-hover) transparent;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner { background: transparent; }
+  ::-webkit-scrollbar-button { display: none; }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    transition: background-color 0.2s ease;
+  }
+  /* Louder only while the pointer is on the box that scrolls. */
+  :hover::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+  body {
+    color: var(--foreground);
+    background-color: var(--background);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      radial-gradient(45rem 30rem at 88% -8%, var(--aurora-a), transparent 65%),
+      radial-gradient(40rem 28rem at 4% 6%, var(--aurora-b), transparent 62%),
+      radial-gradient(38rem 26rem at 50% 108%, var(--aurora-c), transparent 60%),
+      var(--gradient-page);
+    background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size), auto, auto, auto, auto;
+    background-attachment: fixed;
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  /* Syntax colors are tokens too, so code reads correctly in both themes. */
+  .hljs { color: var(--code-foreground); background: transparent; }
+  .hljs-comment,
+  .hljs-quote { color: var(--syntax-comment); font-style: italic; }
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-doctag { color: var(--syntax-keyword); }
+  .hljs-string,
+  .hljs-attr,
+  .hljs-symbol,
+  .hljs-template-variable,
+  .hljs-addition,
+  .hljs-regexp { color: var(--syntax-string); }
+  .hljs-number,
+  .hljs-meta,
+  .hljs-meta .hljs-string,
+  .hljs-bullet { color: var(--syntax-number); }
+  .hljs-title,
+  .hljs-name,
+  .hljs-section,
+  .hljs-built_in,
+  .hljs-selector-id,
+  .hljs-selector-class { color: var(--syntax-function); }
+  .hljs-variable,
+  .hljs-attribute,
+  .hljs-property,
+  .hljs-params { color: var(--syntax-variable); }
+  .hljs-deletion { color: var(--destructive); }
+  .hljs-emphasis { font-style: italic; }
+  .hljs-strong { font-weight: 600; }
+}
+
+/* Unlayered on purpose: .glass must outrank the background and border utilities
+   sitting on the same element. */
+.glass {
+  background-color: var(--glass);
+  background-image: var(--gradient-sheen);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+/* Same pane, but opaque enough to read text through: menus, drawers and anything
+   that floats over the transcript. A 55% pane over scrolling text is unreadable. */
+.glass-solid {
+  background-color: var(--glass-solid);
+}
+
+.glass-interactive {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-interactive:hover {
+  background-color: var(--glass-hover);
+}
+
+/* Citation chips inside an answer. `.cite-active` is toggled imperatively by MessageBubble
+   so react-markdown's component overrides can stay memoised across hovers. Unlayered so it
+   outranks the bg-muted utility on the same element. */
+.cite:hover,
+.cite-active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* The "thinking/searching" label: a highlight sweeping across the text, standing in for a
+   spinner. Unlayered so the transparent text fill outranks any text-colour utility. */
+.shimmer-text {
+  background-image: linear-gradient(
+    to left,
+    var(--muted-foreground) 40%,
+    var(--foreground) 50%,
+    var(--muted-foreground) 60%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 2.2s linear infinite;
+}
+
+@keyframes shimmer-sweep {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+
+/* Solid brand surfaces — unlayered for the same reason .glass is. */
+.gradient-primary {
+  background-color: var(--primary);
+  background-image: var(--gradient-primary);
+  color: var(--primary-foreground);
+}
+
+/* A colour wash *inside* a glass surface; pair with .glass, never alone. */
+.gradient-accent {
+  background-image: var(--gradient-accent), var(--gradient-sheen);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background-color: var(--card);
+    background-image: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* A frozen gradient sweep would leave the label unreadable — fall back to plain text. */
+  .shimmer-text {
+    background-image: none;
+    color: var(--muted-foreground);
+  }
+}

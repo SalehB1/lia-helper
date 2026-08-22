@@ -1,0 +1,390 @@
+<title>معماری دستیار مستندات لیارا</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Vazirmatn:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F6F8FB;
+    --surface: #FFFFFF;
+    --ink: #1C2733;
+    --muted: #5C6B7E;
+    --accent: #2F6BD8;
+    --accent-soft: #E3ECFA;
+    --line: #DCE3EC;
+    --code-bg: #EDF1F7;
+    --good: #1E7F4F;
+    --warn: #A8621A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F151D;
+      --surface: #161E29;
+      --ink: #E7EDF5;
+      --muted: #93A2B4;
+      --accent: #6FA5F5;
+      --accent-soft: #1C2B42;
+      --line: #26313F;
+      --code-bg: #121A24;
+      --good: #4CC08A;
+      --warn: #D99A55;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F151D;
+    --surface: #161E29;
+    --ink: #E7EDF5;
+    --muted: #93A2B4;
+    --accent: #6FA5F5;
+    --accent-soft: #1C2B42;
+    --line: #26313F;
+    --code-bg: #121A24;
+    --good: #4CC08A;
+    --warn: #D99A55;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    direction: rtl;
+    font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+    font-weight: 400;
+    line-height: 1.95;
+    margin: 0;
+    font-size: 16.5px;
+  }
+  .page { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.4rem 6rem; }
+
+  header.doc { border-bottom: 2px solid var(--ink); padding-bottom: 1.6rem; margin-bottom: 2.6rem; }
+  .eyebrow {
+    color: var(--accent); font-size: .8rem; font-weight: 700;
+    letter-spacing: .04em; margin-bottom: .4rem;
+  }
+  h1 {
+    font-family: "Markazi Text", "Vazirmatn", serif;
+    font-size: 3rem; font-weight: 700; line-height: 1.2; margin: 0 0 .6rem;
+    text-wrap: balance;
+  }
+  .lede { color: var(--muted); font-size: 1.05rem; max-width: 40rem; margin: 0 0 1.2rem; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: .12rem .75rem; font-size: .78rem; color: var(--muted);
+  }
+  .chip b { color: var(--ink); font-weight: 500; }
+
+  h2 {
+    font-family: "Markazi Text", "Vazirmatn", serif;
+    font-size: 2.05rem; font-weight: 700; line-height: 1.3;
+    margin: 3.2rem 0 .9rem; text-wrap: balance;
+    display: flex; align-items: baseline; gap: .7rem;
+  }
+  h2 .no {
+    font-family: "IBM Plex Mono", monospace; font-size: .95rem; color: var(--accent);
+    font-weight: 500; direction: ltr;
+  }
+  h3 {
+    font-size: 1.08rem; font-weight: 700; margin: 2.1rem 0 .5rem; text-wrap: balance;
+  }
+  p { margin: 0 0 1rem; }
+  ul, ol { padding-inline-start: 1.3rem; margin: 0 0 1rem; }
+  li { margin-bottom: .35rem; }
+  li::marker { color: var(--accent); }
+  strong { font-weight: 700; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+  code, .en {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    direction: ltr; unicode-bidi: embed;
+    font-size: .84em;
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: .05em .35em;
+    white-space: nowrap;
+  }
+  .term { /* English term inline, no box */
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    direction: ltr; unicode-bidi: embed; font-size: .85em;
+  }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px;
+    direction: ltr; text-align: left; overflow-x: auto;
+    padding: 1rem 1.2rem; line-height: 1.65; margin: 0 0 1.2rem;
+  }
+  pre code { background: none; border: none; padding: 0; white-space: pre; font-size: .8rem; }
+
+  /* callout */
+  .answer-box {
+    background: var(--accent-soft); border-inline-start: 4px solid var(--accent);
+    border-radius: 10px; padding: 1.1rem 1.3rem; margin: 0 0 1.3rem;
+  }
+  .answer-box .q { font-weight: 700; margin-bottom: .35rem; }
+  .answer-box p:last-child { margin-bottom: 0; }
+  .note {
+    border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+    padding: .9rem 1.2rem; margin: 0 0 1.2rem; font-size: .93rem; color: var(--muted);
+  }
+  .note b { color: var(--ink); }
+
+  /* pipeline diagram */
+  .pipe { display: flex; flex-direction: column; gap: 0; margin: 1.4rem 0 1.8rem; }
+  .stage {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: .9rem 1.15rem;
+    display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; align-items: baseline;
+  }
+  .stage .tag {
+    font-family: "IBM Plex Mono", monospace; direction: ltr;
+    color: var(--accent); font-size: .78rem; font-weight: 500;
+  }
+  .stage .name { font-weight: 700; }
+  .stage .desc { grid-column: 2; color: var(--muted); font-size: .9rem; line-height: 1.8; }
+  .arrow {
+    color: var(--muted); text-align: center; font-size: .8rem; padding: .15rem 0;
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+  }
+  .arrow::before, .arrow::after { content: ""; height: 1px; background: var(--line); flex: 0 0 2.5rem; }
+
+  table {
+    border-collapse: collapse; width: 100%; margin: 0 0 1.3rem; font-size: .92rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  .table-wrap { overflow-x: auto; margin: 0 0 1.3rem; }
+  .table-wrap table { margin: 0; min-width: 34rem; }
+  th {
+    text-align: start; font-weight: 700; font-size: .85rem;
+    border-bottom: 2px solid var(--line); padding: .55rem .85rem;
+    background: var(--code-bg);
+  }
+  td { padding: .5rem .85rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .kicker {
+    text-transform: none; color: var(--muted); font-size: .82rem; font-weight: 500;
+    letter-spacing: .02em;
+  }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2.6rem 0; }
+
+  footer.doc {
+    margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .85rem;
+  }
+  @media (max-width: 640px) {
+    h1 { font-size: 2.3rem; }
+    h2 { font-size: 1.7rem; }
+    .page { padding-top: 2.2rem; }
+  }
+</style>
+
+<div class="page" lang="fa">
+
+<header class="doc">
+  <div class="eyebrow">سند فنی</div>
+  <h1>معماری دستیار مستندات لیارا</h1>
+  <p class="lede">شرح کامل سازوکار سیستم: از ساخت پیکره تا بازیابی ترکیبی، حلقهٔ ایجنتی، نردبان مدل و استریم SSE — به‌همراه پاسخ صریح به این‌که آیا این «RAG معمولی» است و چرا معماری فعلی انتخاب شد.</p>
+  <div class="meta-row">
+    <span class="chip">پیکره: <b>~۳٬۵۰۰ چانک از ~۱٬۱۴۲ صفحه</b></span>
+    <span class="chip">بک‌اند: <b class="term">FastAPI + SQLite</b></span>
+    <span class="chip">پنل: <b class="term">Next.js 16</b></span>
+    <span class="chip">مدل‌ها: <b class="term">AvalAI (OpenAI-compatible)</b></span>
+  </div>
+</header>
+
+<div class="answer-box">
+  <div class="q">آیا این RAG معمولی است؟</div>
+  <p>اسکلت کلی همان RAG است — بازیابی، تزریق به کانتکست، تولید — اما در چهار محور از RAG کلاسیک فاصله می‌گیرد: <strong>(۱)</strong> بازیابی را خود مدل در یک حلقهٔ ایجنتی فرمان می‌دهد، نه یک مرحلهٔ ثابت پیش از مدل؛ <strong>(۲)</strong> بازیابی ترکیبی واژگانی + معنایی با ادغام RRF است، نه فقط جست‌وجوی برداری؛ <strong>(۳)</strong> استناد و امنیت در کد اجرا می‌شوند، نه در پرامپت؛ <strong>(۴)</strong> پاسخ‌دهی روی «نردبان مدل» سوار است، نه یک فراخوانی به یک مدل. در عوض، <strong>زیرساختش عمداً ساده‌تر از RAG متعارف است</strong>: هیچ vector database، cache server یا سرویس جانبی‌ای وجود ندارد — کل ایندکس در حافظهٔ همان پروسهٔ API است. بخش ۷ دلیل تک‌تک این انتخاب‌ها را می‌گوید.</p>
+</div>
+
+<h2><span class="no">۱</span>تصویر کلی</h2>
+
+<p>سیستم از دو اپ مستقل تشکیل شده که روی لیارا جدا مستقر می‌شوند و با HTTPS محدودشده به CORS حرف می‌زنند:</p>
+
+<ul>
+  <li><strong>بک‌اند</strong> (<span class="term">backend/</span>): FastAPI با یک worker گانیکورن. ایندکس بازیابی، حلقهٔ ایجنت، شمارندهٔ rate limit و کش امبدینگ همه in-memory و per-process هستند — به همین دلیل <code>-w 1</code> اجباری است. ماندگاری داده یک فایل SQLite روی دیسک مانت‌شده است.</li>
+  <li><strong>پنل</strong> (<span class="term">base-panel/</span>): Next.js 16 (App Router)، React 19، Tailwind v4؛ فارسی و RTL. تمام HTTP از یک درگاه واحد (<code>src/lib/api.ts</code>) می‌گذرد که هدر هویت را اضافه می‌کند، فریم‌های SSE را پارس می‌کند و هر <span class="term">href</span> ناامن را حذف می‌کند.</li>
+</ul>
+
+<p>مسیر یک پیام از ابتدا تا انتها:</p>
+
+<div class="pipe">
+  <div class="stage">
+    <span class="tag">INGEST</span><span class="name">ساخت پیکره — آفلاین و دستی</span>
+    <span class="desc">کلون مخزن رسمی مستندات → چانک‌بندی روی سرتیترها → <code>chunks.jsonl</code> و به‌صورت اختیاری <code>embeddings.npz</code>. هرگز هنگام deploy اجرا نمی‌شود؛ هر دو فایل داخل ایمیج می‌روند.</span>
+  </div>
+  <div class="arrow">بارگذاری یک‌باره در startup</div>
+  <div class="stage">
+    <span class="tag">RETRIEVAL</span><span class="name">بازیابی ترکیبی در حافظهٔ پروسه</span>
+    <span class="desc">BM25 روی متن نرمال‌شدهٔ فارسی + ضرب ماتریسی روی بردارها → ادغام با RRF → ۸ نتیجهٔ برتر. بدون کلید یا بدون npz: فقط BM25، بدون خطا.</span>
+  </div>
+  <div class="arrow">به‌عنوان ابزار در اختیار مدل</div>
+  <div class="stage">
+    <span class="tag">AGENT</span><span class="name">حلقهٔ ایجنتی + نردبان مدل</span>
+    <span class="desc">مدل خودش تصمیم می‌گیرد جست‌وجو کند یا نه؛ تا ۳ دور ابزار، سپس یک فراخوانی پایانی بدون ابزار. مدلی که شکست بخورد بی‌صدا با مدل بعدی جایگزین می‌شود.</span>
+  </div>
+  <div class="arrow">توکن‌به‌توکن</div>
+  <div class="stage">
+    <span class="tag">SSE</span><span class="name">استریم به پنل</span>
+    <span class="desc"><code>meta → tool → token… → sources → suggestions → done</code> به‌علاوهٔ ping هر ۱۵ ثانیه. منابع از رجیستری استناد ساخته می‌شوند، نه از متن مدل.</span>
+  </div>
+  <div class="arrow">پس از پایان پاسخ</div>
+  <div class="stage">
+    <span class="tag">PERSIST</span><span class="name">ذخیره در SQLite</span>
+    <span class="desc">پیام‌ها به‌شکل درخت (نسخه‌ها، ویرایش، regenerate) زیر گفت‌وگوی متعلق به همان نشست ذخیره می‌شوند؛ مصرف توکن هر پاسخ هم کنارش ثبت می‌شود.</span>
+  </div>
+</div>
+
+<h2><span class="no">۲</span>ساخت پیکره (ingest)</h2>
+
+<p>پیکره از مخزن رسمی <span class="term">liara-cloud/docs</span> می‌آید — مسیر <code>public/llms/**/*.md</code> با فرمت <span class="term">llms.txt</span>. این انتخاب به‌جای کرالر وب سه پیامد مستقیم دارد: مارک‌داون تمیز است (نه HTML با منو و فوتر)، سرتیترها واقعی‌اند (مرز چانک‌ها معنایی است، نه پنجرهٔ لغزان کور)، و هر فایل خط <code>Original link:</code> دارد، پس URL استناد از خود منبع می‌آید.</p>
+
+<p><code>ingest/ingest.py</code> این مراحل را اجرا می‌کند:</p>
+
+<ol>
+  <li>استخراج عنوان، لینک اصلی و تشخیص زبان از هر فایل. لینک اصلی فقط وقتی پذیرفته می‌شود که با <code>https://docs.liara.ir/</code> شروع شود؛ وگرنه URL از مسیر فایل ساخته می‌شود (اولین لایهٔ دفاع در برابر پیکرهٔ آلوده).</li>
+  <li>چانک‌بندی روی سرتیترهای <code>##</code> و <code>###</code>؛ چانک‌های کوچک‌تر از ۲۰۰ کاراکتر ادغام و بزرگ‌تر از ۱٬۵۰۰ کاراکتر تقسیم می‌شوند. خروجی: <strong>~۳٬۵۰۰ چانک از ~۱٬۱۴۲ صفحه</strong> در <code>data/chunks.jsonl</code>.</li>
+  <li>به‌صورت اختیاری، امبدینگ هر چانک از endpoint سازگار با OpenAI روی AvalAI (<code>text-embedding-3-small</code>، ۱۵۳۶ بُعد) گرفته می‌شود و در <code>data/embeddings.npz</code> ذخیره می‌شود: بردارهای float16 نرمال‌شدهٔ L2 + شناسهٔ چانک‌ها. فلگ <code>--resume</code> بردارهای قبلی را بازاستفاده می‌کند تا اجرای دوباره هزینه نداشته باشد.</li>
+</ol>
+
+<div class="note"><b>حالت فعلی این محیط:</b> چون <code>AVALAI_API_KEY</code> ست نشده، فایل npz تولید نشده و سیستم در حالت BM25-only کار می‌کند. این یک حالت کاری پشتیبانی‌شده است، نه خرابی — همهٔ ۳٬۵۰۰ چانک ایندکس BM25 دارند و پاسخ‌ها استناد کامل دارند.</div>
+
+<h2><span class="no">۳</span>بازیابی ترکیبی (retrieval)</h2>
+
+<p>در startup، <code>RetrievalService.load()</code> کل ایندکس را یک‌بار در حافظهٔ پروسه می‌سازد: فهرست چانک‌ها، ایندکس <span class="term">BM25Okapi</span> روی «متن + عنوان + سرتیتر» هر چانک، و در صورت وجود، ماتریس float32 امبدینگ‌ها. هنگام خواندن چانک‌ها، هر URLی که با <code>https://docs.liara.ir/</code> شروع نشود یا از الگوی slug مجاز (<code>[A-Za-z0-9._-]</code> در حداکثر ۱۰ سگمنت) پیروی نکند دور انداخته و شمارش می‌شود.</p>
+
+<h3>پیش‌پردازش فارسی</h3>
+<p>پیش از هر امتیازدهی واژگانی، <code>app/shared/persian.py</code> متن را نرمال می‌کند: <span class="term">ي→ی</span>، <span class="term">ك→ک</span>، حذف اعراب و کشیده، تبدیل ارقام عربی/فارسی به ASCII، و مدیریت نیم‌فاصله. سپس ۲۱۷ ایست‌واژهٔ فارسی حذف می‌شوند. دو جدول دامنه‌ای فقط روی <strong>پرسش</strong> (نه اسناد) اعمال می‌شوند:</p>
+<ul>
+  <li><strong>مترادف‌ها:</strong> «دیپلوی/استقرار/deploy»، «دیتابیس/پایگاه‌داده/database» و مانند این‌ها — پلی میان واژگان کاربر و واژگان مستندات.</li>
+  <li><strong>نگاشت یک‌طرفهٔ علامت→مفهوم</strong> (<code>_SYMPTOM_HINTS</code>): «پاک میشه» → دیسک، «بالا نمیاد» → هلث‌چک. یک‌طرفه است تا پرسش دقیق کاربر فنی آلوده نشود. همین جدول recall دستهٔ پرسش‌های عیب‌یابی را از ۲/۵ به ۴/۵ رساند.</li>
+</ul>
+
+<h3>دو فهرست، یک ادغام</h3>
+<p>هر جست‌وجو دو فهرست ۵۰تایی کاندید می‌سازد: مسیر واژگانی (BM25 روی پرسش بسط‌یافته) و مسیر معنایی (امبدینگ پرسش از AvalAI با کش LRU ۵۱۲تایی، سپس یک ضرب ماتریسی <code>matrix @ q</code> روی کل پیکره). هر دو محاسبه CPU خالص‌اند و چون اپ فقط یک event loop دارد، داخل <code>run_in_threadpool</code> اجرا می‌شوند تا استریم‌های در جریان مسدود نشوند.</p>
+
+<p>دو فهرست با <strong>Reciprocal Rank Fusion</strong> ادغام می‌شوند — <span class="term">score = Σ 1/(60 + rank)</span> — و ۸ نتیجهٔ برتر برمی‌گردد. RRF به‌جای جمع وزنیِ امتیازها انتخاب شد، چون امتیاز BM25 و شباهت کسینوسی در دو مقیاس بی‌ربط‌اند و وزن‌دهی‌شان یک ثابت جادویی دلبخواه می‌خواهد؛ RRF فقط به رتبه نگاه می‌کند. میانهٔ زمان کل جست‌وجو حدود <strong>۶ میلی‌ثانیه</strong> است.</p>
+
+<h3>کیفیت اندازه‌گیری‌شده</h3>
+<p>۲۲ پرسش واقعی فارسی روی پیکرهٔ کامل، در حالت BM25-only، با هارنس قابل‌اجرای <code>tests.eval_retrieval</code>:</p>
+
+<div class="table-wrap"><table>
+  <tr><th>دستهٔ پرسش</th><th>recall@1</th><th>recall@5</th></tr>
+  <tr><td>ساده (deploy، env، دامنه، دیتابیس…)</td><td class="num">۸/۱۰</td><td class="num">۹/۱۰</td></tr>
+  <tr><td>پیچیده / چندبخشی</td><td class="num">۴/۵</td><td class="num">۵/۵</td></tr>
+  <tr><td>محاوره‌ای و عیب‌یابی</td><td class="num">۲/۵</td><td class="num">۴/۵</td></tr>
+  <tr><td><strong>مجموع</strong></td><td class="num"><strong>۱۴/۲۰</strong></td><td class="num"><strong>۱۸/۲۰</strong></td></tr>
+</table></div>
+
+<h2><span class="no">۴</span>حلقهٔ ایجنتی و نردبان مدل (chat_service)</h2>
+
+<p>قلب سیستم <code>ChatService.stream_answer</code> است. کانتکست مدل از سه چیز ساخته می‌شود: سیستم‌پرامپت (که یک «نقشهٔ فشردهٔ مستندات» — سگمنت‌های مسیر و تعداد صفحات هر بخش، بدون هیچ متن سندی — هم دارد تا مدل بداند چه چیزی اصلاً در پیکره هست)، پنجرهٔ ۱۰ پیام آخرِ همان شاخه از درخت گفت‌وگو، و پیام کاربر.</p>
+
+<h3>ابزارها</h3>
+<p>مدل با <code>tool_choice="auto"</code> خودش تصمیم می‌گیرد ابزار صدا بزند یا نه — احوال‌پرسی را مستقیم جواب می‌دهد و برای پرسش فنی جست‌وجو می‌کند و در صورت نیاز عبارت جست‌وجو را خودش بازنویسی و تکرار می‌کند. چهار ابزار در دسترس است:</p>
+<ul>
+  <li><code>search_docs</code> — همان بازیابی ترکیبی بخش ۳. در اولین جست‌وجوی هر نوبت، عین جملهٔ کاربر هم به‌عنوان یک جست‌وجوی مستقل ادغام می‌شود (یک شانس دوم مستقل برای رسیدن به صفحهٔ درست).</li>
+  <li><code>read_page</code> — کل یک صفحه را برمی‌گرداند؛ <strong>هیچ درخواست شبکه‌ای نمی‌زند</strong> و فقط URLهای موجود در ایندکس حافظه را می‌خواند.</li>
+  <li><code>generate_config</code> و <code>diagnose_log</code> — دو جادوگر تولید <span class="term">liara.json</span> و عیب‌یابی لاگ بیلد که مستقل هم endpoint دارند.</li>
+</ul>
+<p>آرگومان‌هایی که مدل می‌سازد هم ورودی نامعتمدند و clamp می‌شوند: <code>query</code> تا ۳۰۰ کاراکتر، <code>k</code> بین ۱ تا ۸، <code>platform</code> فقط از enum. خطای ابزار هرگز به داخل حلقه پرتاب نمی‌شود؛ به یک خط توضیح برای مدل تبدیل می‌شود.</p>
+
+<p>مدل اول تا <strong>۳ دور</strong> ابزار مجاز است (مدل‌های بعدی نردبان ۱ دور، چون مستندات مدل قبلی هنوز در کانتکست است)؛ سپس فراخوانی پایانی <strong>بدون آرایهٔ tools</strong> فرستاده می‌شود. این جزئیات مهم است: نسخهٔ قبلی <code>tool_choice="none"</code> را کنار آرایهٔ tools می‌فرستاد و مدل، ابزارِ ممنوع‌شده را می‌دید و برای کاربر روایتش می‌کرد («الان دسترسی به جست‌وجو ندارم»).</p>
+
+<h3>نردبان مدل — یک نوبت، چند مدل</h3>
+<p>قاعدهٔ محصولی مطلق است: <em>کاربر هرگز نباید بشنود که چیزی ته کشید.</em> برای همین یک نوبت پاسخ، نردبانی از مدل‌هاست: پلهٔ صفر مدل انتخابی کاربر، بعد به‌ترتیب <code>gpt-5-mini → claude-haiku-4-5 → gpt-4.1-mini</code> (حذف تکراری‌ها، سقف ۳ تلاش). همه‌چیز روی یک انگارهٔ واحد سوار است:</p>
+
+<div class="answer-box">
+  <p><strong>اولین بایتِ پاسخ که به کلاینت رسید، نوبت به همان مدل قفل می‌شود.</strong> تا پیش از آن (<code>_Turn.opened == False</code>) نوبت می‌تواند بی‌صدا از نو با مدل بعدی شروع شود؛ پس از آن هرگز — متنی که کاربر دیده هیچ‌وقت پس گرفته نمی‌شود.</p>
+</div>
+
+<p>پنجرهٔ پیش از انتشار عمداً پهن نگه داشته شده تا همهٔ حالت‌های شکست را بپوشاند:</p>
+<ul>
+  <li>متنی که مدل قبل از فراخوانی ابزار می‌نویسد («بگذار جست‌وجو کنم…») preamble است، نه پاسخ؛ کلاً از خروجی حذف می‌شود، پس کل فاز ابزار داخل پنجرهٔ قابل‌فسخ می‌ماند.</li>
+  <li>۲۴۰ کاراکتر اول پاسخ (<code>HEAD_HOLD_CHARS</code>) نگه داشته و با گارد <code>_claims_limit</code> سنجیده می‌شود: الگوهایی که مدل در آن‌ها به جای پاسخ، محدودیت خودش را روایت می‌کند («دسترسی ندارم»، «سهمیه تمام شد»، <span class="term">rate limit</span>…). جمله‌ای که نشان استناد <code>[n]</code> دارد مستثناست، چون پیکره پر از جمله‌های مشروع دربارهٔ محدودیت‌های خود لیاراست.</li>
+</ul>
+
+<p>هر شکست پیش از انتشار — خطای provider، پاسخ خالی، گارد، اتمام بودجهٔ زمان (۱۲۰ ثانیه) یا سقف فراخوانی (۸ بار) — با استثنای داخلی <code>_Escalate</code> نوبت را به پلهٔ بعد می‌برد؛ این استثنا عمداً از جنس خطاهای اپ نیست تا هیچ‌وقت به رویداد <code>error</code> برای کاربر تبدیل نشود. متن تلاش مردودشده کامل دور ریخته می‌شود، اما هر چیزی که برایش هزینه شده — پیام‌ها و جفت‌های assistant/tool (یعنی اسنادی که مدل قبلی خوانده)، رجیستری استناد، مصرف توکن — به مدل بعدی منتقل می‌شود. دو شکست providerی پشت سر هم یعنی قطعی سرویس، نه گیر کردن مدل، و نردبان همان‌جا می‌ایستد.</p>
+
+<p>اگر کل نردبان تمام شود، <code>_fallback_answer</code> بدون هیچ فراخوانی LLM (پس نمی‌تواند شکست بخورد) یک پاسخ واقعی از وضعیت نوبت می‌سازد: چه عبارت‌هایی جست‌وجو شد، نزدیک‌ترین صفحه‌ها با نشان <code>[n]</code> خودشان (پس رویداد <span class="term">sources</span> خودبه‌خود پر می‌شود) و پیشنهاد قدم بعد. رویداد <code>error</code> فقط برای خطای واقعی کاربر (ورودی بد، ۴۰۴) و کرش مانده است.</p>
+
+<div class="note"><b>دو محور مستقل که نباید قاطی شوند:</b> نردبان <b>provider</b> در <code>llm_service</code> (AvalAI → OpenRouter → Gemini) افزونگی زیرساختی است — سرویس در دسترس نیست؛ نردبان <b>مدل</b> در <code>chat_service</code> افزونگی رفتاری است — مدل از پس این پرسش برنیامد. هر هشت مدل allowlist روی AvalAI سرو می‌شوند، پس هیچ‌کدام جایگزین دیگری نیست.</div>
+
+<h2><span class="no">۵</span>استناد اجباری — در کد، نه در پرامپت</h2>
+
+<p>ادعای اصلی محصول («هر پاسخی منبع دارد») به قول مدل واگذار نشده؛ لایه‌لایه در کد اجرا می‌شود:</p>
+
+<ol>
+  <li><strong>شماره‌ها فقط از رجیستری می‌آیند.</strong> <code>CitationRegistry.assign</code> تنها جایی است که عددی به منبعی نسبت داده می‌شود و پیش از فرمت‌کردن هر اسنیپت صدا زده می‌شود. رویداد <code>sources</code> از <code>registry.used_sources(answer)</code> ساخته می‌شود — از رجیستری، نه از متن مدل. اگر مدل <code>[9]</code> جعل کند و منبع ۹ وجود نداشته باشد، در پنل به لینک تبدیل نمی‌شود و متن ساده می‌ماند.</li>
+  <li><strong>URLها در سه لایه قفل‌اند.</strong> ingest فقط دامنهٔ مستندات را می‌پذیرد؛ load-time هر چانک خارج از الگو را دور می‌ریزد؛ و در پنل <code>safeHref()</code> هر href غیر <span class="term">https</span> را حذف می‌کند. هیچ مسیری وجود ندارد که صفحه‌ای آلوده در پیکره بتواند <span class="term">javascript:</span> به یک <span class="term">&lt;a href&gt;</span> برساند.</li>
+  <li><strong>پیکره ورودی نامعتمد است.</strong> هر اسنیپت داخل پاکت <span class="term">&lt;docs source="untrusted"&gt;</span> به مدل داده می‌شود و <code>tools_service._neutralize</code> هر تگ <span class="term">&lt;docs&gt;</span> داخل متن را escape و هر <code>[n]</code> ابتدای خط را می‌شکند — پس صفحهٔ آلوده نه می‌تواند پاکت را زودتر ببندد و «متن معتمد» جا بزند، نه خطی بسازد که بایت‌به‌بایت شبیه سرتیتر استناد سرور باشد. این تهدید فرضی نیست؛ خود پیکره الان صفحه‌ای با متن دستورنما دارد.</li>
+  <li><strong>امتناع («در مستندات نیست») یک قاعدهٔ پرامپت است</strong> و صادقانه مستند شده که تضمین قطعی نیست — آنچه تضمین شده این است که هیچ منبع و هیچ URLی خارج از رجیستری و دامنهٔ مستندات هرگز به کاربر نمایش داده نمی‌شود، و زیر پاسخی که استناد ندارد فهرست منابع نمی‌آید.</li>
+</ol>
+
+<h2><span class="no">۶</span>استریم SSE و پنل</h2>
+
+<p>پاسخ روی <code>POST /api/v1/chat/stream</code> به‌شکل رویدادهای SSE می‌آید:</p>
+
+<pre><code>meta          conversationUuid, userMessageUuid, versionIndex/Count
+notice        فقط هنگام تعویض مدل: «روی مدل … ادامه دادیم.»
+tool          start / end + نتایج شماره‌خورده برای UI
+token         دلتاهای متن پاسخ
+sources       از رجیستری استناد
+suggestions   حداکثر ۵ پیشنهادِ ادامه
+done          messageUuid + usage (توکن‌ها، مدل پاسخ‌دهنده، تعداد تلاش)
+error         فقط خطای واقعی؛ + ping هر ۱۵ ثانیه</code></pre>
+
+<p>دو سازوکار ظریف در مسیر استریم:</p>
+<ul>
+  <li><strong>خط پیشنهادها هرگز دیده نمی‌شود.</strong> مدل در انتهای پاسخ، پیشنهادهای ادامه را بعد از نشانگر <code>@@@</code> می‌نویسد. <code>_AnswerBuffer</code> همیشه دنبالهٔ استریم را نگه می‌دارد تا مطمئن شود هیچ تکه‌ای از نشانگر — حتی نصفه‌اش در مرز دو چانک — به کلاینت نرسد؛ خط‌های کامل‌شده بلافاصله می‌روند و فقط خط ناتمام آخر (تا سقف ۲۰۰ کاراکتر) معلق می‌ماند.</li>
+  <li><strong>قطع اتصال داده را از بین نمی‌برد.</strong> پیام کاربر پیش از استریم commit می‌شود؛ اگر وسط پاسخ اتصال قطع شود، متن ناقص ذخیره می‌شود، و اگر هنوز هیچ متنی نیامده باشد، پرسش بی‌پاسخ هم پس گرفته می‌شود تا نسخهٔ مرده در درخت گفت‌وگو نماند.</li>
+</ul>
+
+<p>در پنل، <code>useChat</code> وضعیت را نگه می‌دارد، <code>Markdown.tsx</code> فقط نشان‌های <code>[n]</code> موجود در نگاشت منابع را لینک می‌کند، و گفت‌وگوها درخت نسخه‌دارند: ویرایش یک پرسش، نسخهٔ خواهر می‌سازد؛ regenerate پاسخ دیگری زیر همان پرسش می‌گذارد؛ و پنل سوییچر «۱ / ۲» نشان می‌دهد.</p>
+
+<h3>هویت و مرزهای اعتماد</h3>
+<ul>
+  <li><strong>چت حساب کاربری ندارد.</strong> هویت، هدر <code>X-Session-Id</code> است — یک UUID که خود کلاینت می‌سازد و در localStorage نگه می‌دارد. هر کوئری گفت‌وگو/پیام در خودِ SQL روی <code>session_id</code> فیلتر می‌شود؛ UUID معتبرِ دیگران ۴۰۴ی بایت‌به‌بایت یکسان با «هرگز وجود نداشته» می‌گیرد. rate limit روی IP کلید می‌خورد نه این هدر، چون هدر ساختهٔ کلاینت با چرخاندن UUID بی‌اثر می‌شد.</li>
+  <li><strong>شناسهٔ مدل انتخابی کاربر از بدنهٔ درخواست می‌آید</strong> و یک بردار سوءاستفادهٔ هزینه است؛ enum <code>ChatModel</code> در سه لایهٔ مستقل (ذخیره، خواندن، آخرین دروازه پیش از شبکه) چک می‌شود و هر مقدار ناشناخته بی‌صدا به مدل پیش‌فرض برمی‌گردد.</li>
+  <li>سقف بدنهٔ درخواست ۲۵۶KB پیش از پارس؛ پاسخ ۴۲۲ ورودی کاربر را بازتاب نمی‌دهد؛ لاگ‌ها فقط ۸ کاراکتر اول session id را می‌نویسند.</li>
+  <li>پنل ادمین (تنظیمات ایجنت، کاربران، آمار مصرف) هویت جدایی دارد — کوکی نشست با اعتبارسنجی privilege از دیتابیس در هر درخواست — و ربطی به هویت چت ندارد. تنظیمات ایجنت (نردبان، بودجه‌ها…) بعد از اولین boot در جدول <code>app_settings</code> زندگی می‌کنند و تغییرشان بدون restart روی پاسخ بعدی اثر می‌کند.</li>
+</ul>
+
+<h2><span class="no">۷</span>چرا این معماری؟ — دلیلِ تک‌تک انحراف‌ها از RAG کلاسیک</h2>
+
+<h3>چرا بازیابی را مدل فرمان می‌دهد، نه یک مرحلهٔ ثابت</h3>
+<p>نسخهٔ کلاسیک — همیشه قبل از مدل جست‌وجو کن و اگر امتیاز بازیابی زیر آستانه بود امتناع کن — واقعاً آزموده و <strong>با اندازه‌گیری رد شد</strong>. روی همین پیکره، امتیاز خام BM25 و پوشش واژگانی بین پرسش‌های داخل و خارج دامنه هم‌پوشانی کامل دارند:</p>
+
+<div class="table-wrap"><table>
+  <tr><th>سیگنال</th><th>کمینه در پرسش‌های معتبر</th><th>بیشینه در پرسش‌های نامرتبط</th></tr>
+  <tr><td>امتیاز خام BM25</td><td class="num">۱۱٫۷ («دیتابیسم… پاک میشه»)</td><td class="num">۲۲٫۱ («قیمت بیت‌کوین امروز؟»)</td></tr>
+  <tr><td>پوشش واژگان پرسش</td><td class="num">۰٫۴۰</td><td class="num">۱٫۰۰ («سلام خوبی»)</td></tr>
+</table></div>
+
+<p>یعنی هر آستانه‌ای دقیقاً روی سخت‌ترین پرسش‌های واقعی (کوتاه و محاوره‌ای) امتناع می‌کرد و در عوض «قیمت بیت‌کوین» را جواب می‌داد؛ «سلام خوبی» پوشش واژگانی کامل می‌گیرد و هیچ سیگنال لغوی‌ای آن را از پرسش فنی جدا نمی‌کند. راه‌حل: تصمیمِ «اصلاً جست‌وجو لازم است؟» به خود مدل واگذار شد که برخلاف هر عدد، معنای جمله را می‌فهمد — و حلقهٔ ایجنتی همان چیزی است که به مدل اجازه می‌دهد عبارت را بازنویسی کند و دوباره بگردد، کاری که pre-retrieval تک‌شات هرگز نمی‌تواند.</p>
+
+<h3>چرا ترکیبی (BM25 + امبدینگ)، نه فقط برداری</h3>
+<p>هیچ‌کدام به‌تنهایی کافی نیست. dense خالص روی نام‌های دقیق شکست می‌خورد: کاربری که <span class="term">ENOENT</span> یا <span class="term">liara.json</span> می‌نویسد دنبال تطابق واژه است و امبدینگ این‌ها را در ابر مفاهیم نزدیک گم می‌کند. BM25 خالص روی فارسی محاوره‌ای شکست می‌خورد: «برنامه‌ام بالا نمیاد» با هیچ واژهٔ صفحهٔ مربوطه مشترک نیست. پس هر دو، با ادغام RRF که به مقیاس امتیازها بی‌اعتناست.</p>
+
+<h3>چرا بدون vector database</h3>
+<p>حساب ساده است: ۳٬۵۰۰ بردار ۱۵۳۶بُعدی float16 حدود ۱۰ مگابایت است و یک ضرب ماتریسی numpy روی آن زیر میلی‌ثانیه تمام می‌شود. یک vector DB در این مقیاس هیچ چیزی اضافه نمی‌کند جز یک سرویس دیگر برای راه‌اندازی، پول دادن، مانیتور کردن و خراب شدن — به‌علاوهٔ یک hop شبکه در مسیر هر جست‌وجو. همین منطق برای بقیهٔ زیرساخت هم برقرار است: نه cache server (کش LRU در پروسه)، نه broker، نه GPU. سادگی اینجا نتیجهٔ اندازه‌گیری در مقیاس واقعی مسئله است، نه میان‌بر.</p>
+
+<h3>چرا نردبان مدل، نه یک مدل با پیام خطا</h3>
+<p>الزام محصول این بود که کاربر هرگز جملهٔ «به محدودیت خوردم» را نبیند. پرامپت به‌تنهایی این را تضمین نمی‌کند (پرامپت توصیه است)، پس تضمین به کد منتقل شد: گارد متنی روی ابتدای پاسخ + امکان تعویض بی‌صدای مدل تا وقتی هیچ بایتی منتشر نشده + پاسخ ساخته‌شدهٔ بدون LLM به‌عنوان کف مطلق. هزینهٔ یک false positive در گارد فقط یک تعویض نامرئی است؛ هزینهٔ false negative دقیقاً همان جمله‌ای است که کل این طراحی برای حذفش وجود دارد — این عدم‌تقارن، طراحی را تعیین کرده است.</p>
+
+<h3>چرا llms.txt، چرا SQLite، چرا یک worker</h3>
+<p>مارک‌داون رسمی تمیز به‌جای کرالر یعنی کیفیت چانک بالاتر و به‌روزرسانی پیکره با یک <span class="term">git clone</span>. SQLite روی دیسک مانت‌شده یعنی صفر سرویس دیتابیس برای نگهداری، در حد بار واقعی این اپ. و یک worker به این دلیل که ایندکس بازیابی، rate limiter و snapshot تنظیمات همه per-process هستند — این pin آگاهانه است و load-bearing.</p>
+
+<h2><span class="no">۸</span>حالت‌های خرابی — همیشه degrade، هرگز crash</h2>
+
+<div class="table-wrap"><table>
+  <tr><th>وضعیت</th><th>رفتار سیستم</th></tr>
+  <tr><td>نبود <code>embeddings.npz</code> یا کلید امبدینگ</td><td>بازیابی BM25-only؛ <code>/healthz</code> گزارش می‌دهد <code>"embeddings": false</code></td></tr>
+  <tr><td>عدم تطابق مدل/ابعاد امبدینگ با ماتریس ذخیره‌شده</td><td>سقوط امن به BM25-only — چون ماتریس و بردارِ دو مدل متفاوت «تمیز» ضرب می‌شوند و بی‌صدا رتبه‌بندی بی‌معنا می‌دهند</td></tr>
+  <tr><td>نبود هیچ کلید LLM</td><td>بازیابی کار می‌کند؛ چت پاسخ ساخته‌شدهٔ fallback می‌دهد (نه error)؛ جادوگرها ۲۰۰ با اسنیپت و استناد برمی‌گردانند</td></tr>
+  <tr><td>خطای provider وسط استریمِ منتشرشده</td><td>متنِ رفته حفظ می‌شود و پاسخ صادقانه با «تا همین‌جا توانستم ادامه بدهم…» بسته می‌شود</td></tr>
+  <tr><td>نبود <code>chunks.jsonl</code></td><td>ایندکس خالی، لاگ خطا، <code>/healthz</code> پاسخ ۵۰۳</td></tr>
+</table></div>
+
+<footer class="doc">
+  منابع این سند: کد سرویس‌ها (<span class="term">chat_service.py</span>، <span class="term">retrieval_service.py</span>، <span class="term">tools_service.py</span>)، <span class="term">liara/README.md</span> و <span class="term">liara/CLAUDE.md</span>. اعداد recall و آستانه‌ها خروجی هارنس‌های قابل‌اجرای <span class="term">tests/</span> هستند.
+</footer>
+
+</div>
